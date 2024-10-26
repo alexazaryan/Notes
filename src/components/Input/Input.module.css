@@ -1,0 +1,27 @@
+.input {
+  border: none;
+  background: rgb(58, 52, 52);
+  color: #fff;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  padding: 5px;
+  width: 100%;
+  font-size: 14px;
+  /* outline: none; */
+
+  transition: border 3s ease, background 3s ease;
+}
+
+::placeholder {
+  opacity: 1;
+  color: #fff;
+}
+
+.invalid {
+  border: 1px solid #ff0000;
+  background: rgb(68, 6, 6);
+  color: #fff;
+}

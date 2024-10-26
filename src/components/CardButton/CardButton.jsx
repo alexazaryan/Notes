@@ -6,7 +6,6 @@ export default function CardButton({ children, className, ...props }) {
   return (
     <button className={sl} {...props}>
       {children}
-      {console.log("**")}
     </button>
   );
 }
