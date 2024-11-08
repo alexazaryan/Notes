@@ -1,7 +1,7 @@
 .card-button {
   display: block;
   border-radius: 3px;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.09);
   padding: 20px;
   border: none;
   color: #fff;
@@ -11,7 +11,7 @@
 }
 
 .card-button:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .journal-add {
@@ -25,4 +25,8 @@
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+}
+
+.selected {
+  background-color: green;
 }

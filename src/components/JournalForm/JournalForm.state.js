@@ -1,3 +1,5 @@
+import { useId } from "react";
+
 export const INITIAL_STATE = {
   isValid: { title: true, text: true, date: true },
   values: { title: "", date: "", text: "", tag: "" },
@@ -11,7 +13,6 @@ export function formReducer(state, action) {
   // type — тип действия, который определяет, что именно нужно сделать (например, "SUBMIT", "RESET")
   //action это case "SUBMIT": ..... payload это все значения  title text, date
 
-  console.log(state.values);
   switch (action.type) {
     case "SUBMIT": {
       const titleValidity = state.values.title.trim().length;
@@ -44,7 +45,7 @@ export function formReducer(state, action) {
     }
 
     case "CLEAR_FORM": {
-      return INITIAL_STATE; // Сброс состояния до начального
+      return INITIAL_STATE ; // Сброс состояния до начального
     }
 
     default:

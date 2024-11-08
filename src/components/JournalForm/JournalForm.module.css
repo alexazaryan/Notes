@@ -15,7 +15,6 @@
   padding: 5px;
   width: 100%;
   font-size: 14px;
-  /* outline: none; */
 
   transition: border 3s ease, background 3s ease;
 }
@@ -59,3 +58,44 @@
   background: rgba(255, 255, 255, 0.05);
   border-radius: 50%;
 }
+
+/* блок inpyt one */
+.inp-one-title__delete {
+  color: red;
+}
+
+.inp-one {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.delete-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  transition: scale 0.5s;
+}
+
+.delete-img:hover {
+  scale: 1.5;
+}
+
+.delete-img img {
+  display: block;
+}
+
+/* ========================myCustomClass */
+/* .myCustomClass {
+  border: 2px solid green !important;
+  } */
+
+/* .form-row_data {
+  background-color: rgb(58, 52, 52);
+  width: 100%;
+  padding: 0;
+  border: 2px solid green !important;
+} */

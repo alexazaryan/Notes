@@ -7,10 +7,10 @@
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  padding: 5px;
+  padding: 15px;
+  margin-bottom: 5px;
   width: 100%;
   font-size: 14px;
-  /* outline: none; */
 
   transition: border 3s ease, background 3s ease;
 }
@@ -20,8 +20,21 @@
   color: #fff;
 }
 
+.myCustomClass {
+  /* background-color: green; */
+}
+
 .invalid {
   border: 1px solid #ff0000;
   background: rgb(68, 6, 6);
   color: #fff;
+}
+
+.myCustomClass::placeholder {
+  color: rgb(237, 121, 121);
+}
+
+.form-row_data_input {
+  /* width: 10%; */
+  color: rgb(237, 121, 121);
 }

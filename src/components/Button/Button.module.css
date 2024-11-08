@@ -10,6 +10,7 @@
   line-height: 26px;
   color: #fff;
 }
+
 .btn-blue:hover {
   background: #222096;
 }
@@ -17,4 +18,8 @@
 .btn-blue {
   margin-top: 30px;
   background: #312eb5;
+}
+
+.my-style-button {
+  width: 100%;
 }

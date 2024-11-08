@@ -1,7 +1,7 @@
-import cn from "classnames";
+import { forwardRef } from "react"; //почитать
 
 import styles from "./Input.module.css";
-import { forwardRef } from "react"; //почитать
+import cn from "classnames";
 
 const Input = forwardRef(function Input(
   { className, isValid = false, ...props },
@@ -11,7 +11,8 @@ const Input = forwardRef(function Input(
     <input
       ref={ref}
       {...props}
-      className={cn(styles["input"], {
+      // className={cn(className, styles["input"], { было
+      className={cn(styles[className], styles["input"], {
         [styles["invalid"]]: isValid, //true
       })}
     />

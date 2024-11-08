@@ -1,11 +1,12 @@
+import { useEffect, useReducer } from "react";
 import CardButton from "../CardButton/CardButton";
 
 import "./JournalAddButton.css";
 
-export default function JournalAddButton() {
+export default function JournalAddButton({ clearForm }) {
   return (
     <div>
-      <CardButton className="journal-add">
+      <CardButton className="journal-add" onClick={clearForm}>
         <svg
           width="20"
           height="21"

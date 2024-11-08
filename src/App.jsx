@@ -1,61 +1,74 @@
-import { useState, useEffect } from "react";
-
 import JournalList from "./components/JournalList/JournalList";
 import LeftPanel from "./components/LeftPanel/LeftPanel";
 import JournalAddButton from "./components/JournalAddButton/JournalAddButton";
 import Body from "./components/Body/Body";
 import JournalForm from "./components/JournalForm/JournalForm";
+import useLocalStorage from "./hooks/use-localstorage.hooks";
+import Header from "./components/Header/Header";
+
+import { UserContextProvider } from "./context/user.context";
+import { useState } from "react";
 
 import "./App.css";
 
-// сохранять данные после кнопи отправить веденный инпут проверять сосояние изменения и как только изменяется сосояние добавлять в локалсторж
+function mapItems(items) {
+  if (!items) {
+    return [];
+  }
+  return items.map((item) => ({
+    ...item,
+    date: new Date(item.date),
+  }));
+}
 
 function App() {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useLocalStorage(["data"]); // массив всех нотайсов
+  const [selectedItem, setSelectedItem] = useState(null); //информация о выбранном нотайсе
 
-  // uselocalStorage - 
-
-  useEffect(() => {
-    let data = JSON.parse(localStorage.getItem("data"));
-
-    if (data) {
-      let dataNew = data.map((item) => ({
-        ...item,
-        date: new Date(item.date),
-      }));
-      setItems(dataNew);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (items.length) {
-      localStorage.setItem("data", JSON.stringify(items)); // save in localStorage
-    }
-  }, [items]);
+  function deleteItem(id) {
+    setItems([...items.filter((item) => item.id !== id)]);
+    setSelectedItem({});
+  }
 
   const addItem = (item) => {
-    setItems((oldItems) => [
-      ...oldItems,
-
-      {
-        title: item.title,
-        text: item.text,
-        date: new Date(item.date),
-        id: Math.max(...oldItems.map((item) => item.id)) + 1,
-      },
-    ]);
+    if (!item.id) {
+      setItems([
+        ...mapItems(items),
+        {
+          ...item,
+          date: new Date(item.date),
+          id: items.length > 0 ? Math.max(...items.map((i) => i.id)) + 1 : 1,
+        },
+      ]);
+    } else {
+      setItems([
+        ...mapItems(items).map((element) => {
+          if (element.id === item.id) {
+            return { ...item };
+          }
+          return element;
+        }),
+      ]);
+    }
   };
 
   return (
-    <div className="app">
-      <LeftPanel>
-        <JournalAddButton />
-        <JournalList data={items} />
-      </LeftPanel>
-      <Body>
-        <JournalForm onSubmit={addItem} />
-      </Body>
-    </div>
+    <UserContextProvider>
+      <div className="app">
+        <LeftPanel>
+          <Header />
+          <JournalAddButton clearForm={() => setSelectedItem(null)} />
+          <JournalList setItem={setSelectedItem} data={mapItems(items)} />
+        </LeftPanel>
+        <Body>
+          <JournalForm
+            onSubmit={addItem}
+            data={selectedItem}
+            onDelete={deleteItem}
+          />
+        </Body>
+      </div>
+    </UserContextProvider>
   );
 }
 

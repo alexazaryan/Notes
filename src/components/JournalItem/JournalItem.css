@@ -19,6 +19,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  margin-right: 20px;
   margin-bottom: 5px;
 }
 
@@ -37,4 +38,8 @@
   font-weight: 400;
   line-height: normal;
   margin-bottom: 5px;
+}
+
+.journal-item__body {
+  display: flex;
 }

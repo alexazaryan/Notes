@@ -1,4 +1,6 @@
 .app {
   padding: 15px;
+  margin-right: 15px;
   display: flex;
+  overflow: hidden;
 }

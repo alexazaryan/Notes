@@ -3,11 +3,10 @@ import Button from "../Button/Button";
 
 import styles from "./JournalForm.module.css";
 
-//export default 
+//export default
 function JournalFormOld({ onAddNewItem }) {
   const initialState = { title: true, text: true, date: true };
   const [formValueState, setFormValueState] = useState(initialState);
-  console.log(formValueState);
 
   const addJournalItem = (event) => {
     event.preventDefault();
