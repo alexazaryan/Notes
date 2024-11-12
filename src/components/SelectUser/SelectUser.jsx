@@ -1,7 +1,7 @@
-// import src/components/SelectUser/SelectUser.module.css
-
 import { UserContext } from "../../context/user.context";
 import { useContext } from "react";
+
+import "./SelectUser.module.css";
 
 export default function SelectUser() {
   const { userId, setUserId } = useContext(UserContext); //деструктаризация { читать}
